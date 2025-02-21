@@ -9,7 +9,7 @@
     "build": "tsc && tsc-alias",
     "generate": "drizzle-kit generate:pg",
     "migrate": "tsx src/db/migrate.ts",
-    "generate-token": "tsx src/generateAdminToken.ts"
+    "generate-token": "tsx generateAdminToken.ts"
   },
   "author": "",
   "license": "ISC",

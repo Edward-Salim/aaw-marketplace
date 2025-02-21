@@ -10,6 +10,6 @@ export default {
     port: parseInt(process.env.DB_PORT ?? "5432", 10),
     user: process.env.DB_USER ?? "postgres",
     password: process.env.DB_PASSWORD ?? "postgres",
-    database: process.env.AUTH_DB_NAME ?? "auth_db",
+    database: process.env.DB_NAME ?? "auth_db",
   },
 } satisfies Config;

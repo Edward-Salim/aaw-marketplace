@@ -13,7 +13,7 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - AUTH_SERVICE_PORT=5001
-      - AUTH_DB_NAME=auth_db
+      - DB_NAME=auth_db
     depends_on:
       - auth-db
     networks:
@@ -39,12 +39,16 @@ services:
     ports:
       - "5002:5002"
     environment:
+      - TENANT_ID=47dd6b24-0b23-46b0-a662-776158d089ba
+      - JWT_SECRET=auth_ms_jwt_secret
+      - ADMIN_JWT_SECRET=admin_auth_ms_jwt_secret
+      - ADMIN_TENANT_ID=47dd6b24-0b23-46b0-a662-776158d089ba
       - DB_HOST=orders-db
       - DB_PORT=5432
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - ORDERS_SERVICE_PORT=5002
-      - ORDERS_DB_NAME=order_db
+      - DB_NAME=order_db
     depends_on:
       - orders-db
     networks:
@@ -61,7 +65,7 @@ services:
     ports:
       - "5434:5432"
     volumes:
-      - orders_db_data:/var/lib/postgresql/data
+      - order_db_data:/var/lib/postgresql/data
     networks:
       - microservices-network
 
@@ -70,12 +74,16 @@ services:
     ports:
       - "5003:5003"
     environment:
+      - TENANT_ID=47dd6b24-0b23-46b0-a662-776158d089ba
+      - JWT_SECRET=auth_ms_jwt_secret
+      - ADMIN_JWT_SECRET=admin_auth_ms_jwt_secret
+      - ADMIN_TENANT_ID=47dd6b24-0b23-46b0-a662-776158d089ba
       - DB_HOST=products-db
       - DB_PORT=5432
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - PRODUCTS_SERVICE_PORT=5003
-      - PRODUCTS_DB_NAME=product_db
+      - DB_NAME=product_db
     depends_on:
       - products-db
     networks:
@@ -92,7 +100,7 @@ services:
     ports:
       - "5435:5432"
     volumes:
-      - products_db_data:/var/lib/postgresql/data
+      - product_db_data:/var/lib/postgresql/data
     networks:
       - microservices-network
 
@@ -101,12 +109,16 @@ services:
     ports:
       - "5004:5004"
     environment:
+      - TENANT_ID=47dd6b24-0b23-46b0-a662-776158d089ba
+      - JWT_SECRET=auth_ms_jwt_secret
+      - ADMIN_JWT_SECRET=admin_auth_ms_jwt_secret
+      - ADMIN_TENANT_ID=47dd6b24-0b23-46b0-a662-776158d089ba
       - DB_HOST=tenant-db
       - DB_PORT=5432
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - TENANT_SERVICE_PORT=5004
-      - TENANT_DB_NAME=tenant_db
+      - DB_NAME=tenant_db
     depends_on:
       - tenant-db
     networks:
@@ -132,12 +144,16 @@ services:
     ports:
       - "5005:5005"
     environment:
+      - TENANT_ID=47dd6b24-0b23-46b0-a662-776158d089ba
+      - JWT_SECRET=auth_ms_jwt_secret
+      - ADMIN_JWT_SECRET=admin_auth_ms_jwt_secret
+      - ADMIN_TENANT_ID=47dd6b24-0b23-46b0-a662-776158d089ba
       - DB_HOST=wishlist-db
       - DB_PORT=5432
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - WISHLIST_SERVICE_PORT=5005
-      - WISHLIST_DB_NAME=wishlist_db
+      - DB_NAME=wishlist_db
     depends_on:
       - wishlist-db
     networks:
@@ -160,8 +176,8 @@ services:
 
 volumes:
   auth_db_data:
-  orders_db_data:
-  products_db_data:
+  order_db_data:
+  product_db_data:
   tenant_db_data:
   wishlist_db_data:
 

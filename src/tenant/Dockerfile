@@ -5,7 +5,7 @@ WORKDIR /tenant-service
 COPY package.json ./
 
 # Install pnpm
-RUN npm install -g pnpm typescript
+RUN npm install -g pnpm typescript tsx
 
 # Install dependencies
 RUN pnpm install
@@ -29,6 +29,7 @@ COPY --from=builder /tenant-service/package.json ./package.json
 
 RUN npm install --only=production
 
-EXPOSE 5004
-
 CMD ["node", "dist/server.js"]
+
+
+EXPOSE 5004

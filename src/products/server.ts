@@ -27,7 +27,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/products", productRoutes);
+app.use("/api/product", productRoutes);
 
 // Health check endpoint
 app.get("/health", (_, res: Response) => {

@@ -5,7 +5,7 @@ WORKDIR /products-service
 COPY package.json ./
 
 # Install pnpm
-RUN npm install -g pnpm typescript
+RUN npm install -g pnpm typescript tsx
 
 # Install dependencies
 RUN pnpm install
@@ -29,6 +29,6 @@ COPY --from=builder /products-service/package.json ./package.json
 
 RUN npm install --only=production
 
-EXPOSE 5003
-
 CMD ["node", "dist/server.js"]
+
+EXPOSE 5003

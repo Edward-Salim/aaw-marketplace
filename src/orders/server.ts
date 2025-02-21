@@ -6,6 +6,7 @@ import cors from "cors";
 import expressPromBundle from "express-prom-bundle";
 
 import orderRoutes from "@src/order/order.routes";
+import cartRoutes from "@src/cart/cart.routes";
 
 const app: Express = express();
 
@@ -27,7 +28,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/orders", orderRoutes);
+app.use("/api/order", orderRoutes);
+app.use("/api/cart", cartRoutes);
 
 // Health check endpoint
 app.get("/health", (_, res: Response) => {
